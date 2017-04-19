@@ -1,6 +1,9 @@
-# Spring Boot With MongoDB and RESTful Webservices Example Application
+# Spring Boot With MongoDB and RESTful Webservices
 
 A sample application to get started with Java+Maven+SpringBoot+MongoDB and RESTful webservice.I hope it will help you.
+## Prerequisites:  
+* MongoDB should be installed and running.
+* Update MongoConfigApp.java with your dataBaseName, currently it has testdb
 
 ## How to Run
 
@@ -21,8 +24,8 @@ Once the application runs you should see something like this :-
 ## URL details : 
 
 1.	Get all employee  
- url :  http://localhost:2020/v1/employees
-Output will be like below : 
+ url :  http://localhost:2020/v1/employees  
+ Output will be like below : 
 ````
 [
   {
@@ -42,8 +45,8 @@ Output will be like below :
 ]
 ````
 
-2.	Get employee by id  
-url :  http://localhost:2020/v1/employee/id/38860
+2.	Get employee by id   
+url :  http://localhost:2020/v1/employee/id/38860   
 Out put will be like below - 
 ```
  {
@@ -55,7 +58,7 @@ Out put will be like below -
   }
 ```
 3.	Get employee by name  
-url :  http://localhost:2020/v1/employee/name/pradeep
+url :  http://localhost:2020/v1/employee/name/pradeep  
 Out put will be like below - 
 ```
  {
@@ -69,7 +72,7 @@ Out put will be like below -
 
 
 4.	Add employee  
-url : http://localhost:2020/v1/employee
+url : http://localhost:2020/v1/employee  
 Note : while invoking this url mention the details of employee which you want to add in the body of REST tool (e.g. POSTMAN) like below - 
 ```
  {
@@ -82,7 +85,7 @@ Note : while invoking this url mention the details of employee which you want to
 ```
 
 5.	Update employee  
-url :  http://localhost:2020/v1/update
+url :  http://localhost:2020/v1/update  
 Note : while invoking this url mention the details of employee which you want to update in the body of REST tool (e.g. POSTMAN) like below - 
 ```
  {
