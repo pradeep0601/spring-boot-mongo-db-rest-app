@@ -1,15 +1,15 @@
 # Spring Boot With MongoDB and RESTful Webservices
 
-A sample application to get started with Java+Maven+SpringBoot+MongoDB and RESTful webservice.I hope it will help you.
+A sample application to get started with SpringBoot+MongoDB and RESTful webservice. I hope it will help you.
 ## Prerequisites:  
 * MongoDB should be installed and running.
-* Update MongoConfigApp.java with your dataBaseName, currently it has testdb
+* Update MongoConfigApp.java with your dataBaseName, currently it contains "testdb" as a dataBaseName.
 
 ## How to Run
 
 * Clone this repository 
 * You can build the project and run the tests by running ```mvn clean package```
-* After successfull build, run StarterApp.java as a java application
+* After successfull build, run StarterApp.java as a java application.
 * Check the console output, to make sure no exceptions are thrown
 
 Once the application runs you should see something like this :-
@@ -47,7 +47,7 @@ Once the application runs you should see something like this :-
 
 2.	Get employee by id   
 url :  http://localhost:2020/v1/employee/id/38860   
-Out put will be like below - 
+Output will be like below - 
 ```
  {
     "employeeId": "38860",
@@ -59,7 +59,7 @@ Out put will be like below -
 ```
 3.	Get employee by name  
 url :  http://localhost:2020/v1/employee/name/pradeep  
-Out put will be like below - 
+Output will be like below - 
 ```
  {
     "employeeId": "38860",
@@ -73,7 +73,7 @@ Out put will be like below -
 
 4.	Add employee  
 url : http://localhost:2020/v1/employee  
-Note : while invoking this url mention the details of employee which you want to add in the body of REST tool (e.g. POSTMAN) like below - 
+Note : while invoking this url put the details of employee which you want to add in the body of REST tool (e.g. POSTMAN), like below - 
 ```
  {
     "employeeId": "38860",
@@ -90,10 +90,10 @@ Note : while invoking this url mention the details of employee which you want to
 ```
  {
     "employeeId": "38860",
-    "name": "Pradeep",
-    "location": "Gurgaon",
-    "salary": 11111,
-    "mobileNo": "1234567890"
+    "name": "Pradeep2",
+    "location": "Gurgaon2",
+    "salary": 111112,
+    "mobileNo": "1234567892"
   }
 ```
 keep the existing employeeId, if employeeId will not be there then a new record will get created.
