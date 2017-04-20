@@ -73,7 +73,7 @@ Output will be like below -
 
 4.	Add employee  
 url : http://localhost:2020/v1/employee  
-Note : while invoking this url put the details of employee which you want to add in the body of REST tool (e.g. POSTMAN), like below - 
+Note : to invoke it keep the details of employee in the body of REST tool (e.g. POSTMAN), like below -
 ```
  {
     "employeeId": "38860",
