@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pradeep.spring.mongodb.dao.EmployeeDAO;
 import com.pradeep.spring.mongodb.model.Employee;
+import com.pradeep.spring.mongodb.repository.EmployeeRepository;
 
 /**
  * 
@@ -18,44 +18,45 @@ import com.pradeep.spring.mongodb.model.Employee;
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
-	private EmployeeDAO employeeDAO;
+	private EmployeeRepository repository;
 
 	@Override
 	public Employee getEmployeeById(String id) {
-		return employeeDAO.getEmployeeById(id);
+		
+		return repository.findByEmployeeId(id);
 	}
 
 	@Override
 	public Employee getEmployeeByName(String name) {
-		return employeeDAO.getEmployeeByName(name);
+		return repository.findByName(name);
 	}
 
 	@Override
 	public List<Employee> getAllEmployee() {
-		return employeeDAO.getAllEmployee();
+		return repository.findAll();
 	}
 
 	@Override
 	public Employee addEmployee(Employee employee) {
-		return employeeDAO.addEmployee(employee);
+		return repository.insert(employee);
 
 	}
 
 	@Override
 	public Employee updateEmployee(Employee employee) {
-		return employeeDAO.updateEmployee(employee);
+		return repository.save(employee);
 
 	}
 
 	@Override
 	public void deleteEmployee(String employeeId) {
-		employeeDAO.deleteEmployee(employeeId);
+		repository.delete(employeeId);
 
 	}
 
 	@Override
 	public void deleteAllEmployee() {
-		employeeDAO.deleteAllEmployee();
+		repository.deleteAll();
 
 	}
 
