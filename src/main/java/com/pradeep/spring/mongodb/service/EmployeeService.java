@@ -23,5 +23,7 @@ public interface EmployeeService {
 	public void deleteEmployee(String employeeId);
 
 	public void deleteAllEmployee();
+	
+	public List<Employee> getEmployeeByNameAndLocation(String name, String location);
 
 }

@@ -10,7 +10,7 @@ import com.pradeep.spring.mongodb.model.Employee;
  *
  */
 @Repository
-public interface EmployeeRepository extends MongoRepository<Employee, String>{
+public interface EmployeeRepository extends MongoRepository<Employee, String>, EmployeeRepositoryCustom{
 
 	public Employee findByEmployeeId(String employeeId);//naming syntax : findBy<property name of model> 
 	
