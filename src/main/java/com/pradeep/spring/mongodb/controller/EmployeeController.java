@@ -26,15 +26,16 @@ public class EmployeeController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
 
 	@RequestMapping(value = "/employees", method = RequestMethod.GET)
-	public ResponseEntity<List<Employee>> getAllEmployee() {
+	public ResponseEntity<?> getAllEmployee() {
 
 		LOGGER.info("getAllEmployee() is getting executed.");
 
 		List<Employee> employees = employeeService.getAllEmployee();
 
-		if (employees.size() == 0) {
-			return new ResponseEntity<List<Employee>>(HttpStatus.OK);
+		if (employees.isEmpty()) {
+			return new ResponseEntity<CustomMessage>(new CustomMessage("No record found."), HttpStatus.OK);
 		}
+		
 		return new ResponseEntity<List<Employee>>(employees, HttpStatus.OK);
 	}
 
@@ -77,13 +78,16 @@ public class EmployeeController {
 		return new ResponseEntity<Employee>(emplFetchedFromDB, HttpStatus.CREATED);
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	public ResponseEntity<?> updateEmployee(@RequestBody Employee employee) {
 
 		LOGGER.info("updateEmployee() is getting executed for employee: {}", employee);
 
 		Employee updatedEmp = employeeService.updateEmployee(employee);
 
+		if(updatedEmp == null){
+			return new ResponseEntity<>(new CustomMessage("There is no record with given id"), HttpStatus.BAD_REQUEST);
+		}
 		return new ResponseEntity<Employee>(updatedEmp, HttpStatus.OK);
 	}
 
@@ -105,6 +109,22 @@ public class EmployeeController {
 		employeeService.deleteAllEmployee();
 
 		return new ResponseEntity<String>("All Employee got deleted.", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/employees/name/{name}/location/{location}", method = RequestMethod.GET)
+	public ResponseEntity<?> getEmployeeByNameAndLoc(@PathVariable String name, @PathVariable String location) {
+
+		LOGGER.info("getEmployeeByNameAndLoc() is getting executed.");
+
+		if(name ==null || location == null){
+			return new ResponseEntity<CustomMessage>(new CustomMessage("please provide name and location."), HttpStatus.BAD_REQUEST);
+		}
+		List<Employee> employees = employeeService.getEmployeeByNameAndLocation(name, location);
+
+		if (employees.isEmpty()) {
+			return new ResponseEntity<CustomMessage>(new CustomMessage("No record found."), HttpStatus.OK);
+		}
+		return new ResponseEntity<List<Employee>>(employees, HttpStatus.OK);
 	}
 
 }

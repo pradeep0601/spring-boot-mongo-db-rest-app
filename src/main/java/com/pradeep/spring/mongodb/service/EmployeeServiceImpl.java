@@ -44,8 +44,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee updateEmployee(Employee employee) {
+		if(employee.getEmployeeId() == null){
+			return null;
+		}
 		return repository.save(employee);
-
 	}
 
 	@Override
@@ -58,6 +60,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void deleteAllEmployee() {
 		repository.deleteAll();
 
+	}
+
+	@Override
+	public List<Employee> getEmployeeByNameAndLocation(String name, String location) {
+		return repository.getEmployeeByNameLocation(name, location);
 	}
 
 }
